@@ -1,0 +1,16 @@
+{
+  "num_carriers": 20000,
+  "duration_ps": 5000,
+  "sample_interval_ps": 5,
+  "num_energy_bins": 1000,
+  "histogram_max_kinetic_energy_eV": 2.0,
+  "initial_valley": 0,
+  "optical_excitation": {
+    "band_gap_eV": 1.0,
+    "photon_center_eV": 2.0,
+    "spectral_fwhm_eV": 1.0,
+    "electron_mass_ratio": 1.0,
+    "hole_mass_ratio": 1.0
+  },
+  "model": {"temperature_K": 600}
+}

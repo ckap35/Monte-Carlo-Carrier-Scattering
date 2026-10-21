@@ -1,0 +1,40 @@
+test_import_has_no_output_or_files (test_cli.CommandLineTests.test_import_has_no_output_or_files) ... ok
+test_optical_excitation_saved_pairs_and_config_reload (test_cli.CommandLineTests.test_optical_excitation_saved_pairs_and_config_reload) ... ok
+test_saved_arrays_energy_ledger_and_config_reload (test_cli.CommandLineTests.test_saved_arrays_energy_ledger_and_config_reload) ... ok
+test_absolute_energy_alignment_preserves_valley_counts (test_diagnostics.DiagnosticTests.test_absolute_energy_alignment_preserves_valley_counts) ... ok
+test_accessible_reference_matches_known_ladder_partition (test_diagnostics.DiagnosticTests.test_accessible_reference_matches_known_ladder_partition) ... ok
+test_continuum_normalization_populations_and_mean (test_diagnostics.DiagnosticTests.test_continuum_normalization_populations_and_mean) ... ok
+test_equilibrium_draws_preserve_probability_and_match_reference_mean (test_diagnostics.DiagnosticTests.test_equilibrium_draws_preserve_probability_and_match_reference_mean) ... ok
+test_initial_energy_classes_are_normalized_individually (test_diagnostics.DiagnosticTests.test_initial_energy_classes_are_normalized_individually) ... ok
+test_non_aligned_histograms_are_not_silently_smeared (test_diagnostics.DiagnosticTests.test_non_aligned_histograms_are_not_silently_smeared) ... ok
+test_unconnected_model_does_not_claim_a_unique_ladder_equilibrium (test_diagnostics.DiagnosticTests.test_unconnected_model_does_not_claim_a_unique_ladder_equilibrium) ... ok
+test_gaussian_intensity_fwhm (test_excitation.OpticalExcitationTests.test_gaussian_intensity_fwhm) ... ok
+test_jdos_integrates_to_k_space_state_count (test_excitation.OpticalExcitationTests.test_jdos_integrates_to_k_space_state_count) ... ok
+test_optical_simulation_ledger_histograms_and_reproducibility (test_excitation.OpticalExcitationTests.test_optical_simulation_ledger_histograms_and_reproducibility) ... ok
+test_photon_energy_and_same_k_energy_partition (test_excitation.OpticalExcitationTests.test_photon_energy_and_same_k_energy_partition) ... ok
+test_rejects_inconsistent_optical_setup (test_excitation.OpticalExcitationTests.test_rejects_inconsistent_optical_setup) ... ok
+test_samples_and_pdf_against_independent_quadrature (test_excitation.OpticalExcitationTests.test_samples_and_pdf_against_independent_quadrature) ... ok
+test_threshold_pump_matches_analytic_moments (test_excitation.OpticalExcitationTests.test_threshold_pump_matches_analytic_moments) ... ok
+test_bose_occupation_uses_phonon_energy (test_physics.PhysicsTests.test_bose_occupation_uses_phonon_energy) ... ok
+test_couplings_are_copied_and_readonly (test_physics.PhysicsTests.test_couplings_are_copied_and_readonly) ... ok
+test_every_channel_obeys_energy_balance (test_physics.PhysicsTests.test_every_channel_obeys_energy_balance) ... ok
+test_forbidden_thresholds_have_zero_rates (test_physics.PhysicsTests.test_forbidden_thresholds_have_zero_rates) ... ok
+test_invalid_parameters_and_states_are_rejected (test_physics.PhysicsTests.test_invalid_parameters_and_states_are_rejected) ... ok
+test_pairwise_detailed_balance_with_mass_and_degeneracy (test_physics.PhysicsTests.test_pairwise_detailed_balance_with_mass_and_degeneracy) ... ok
+test_zero_temperature_forbids_absorption (test_physics.PhysicsTests.test_zero_temperature_forbids_absorption) ... ok
+test_competing_channels_follow_rate_ratios (test_simulation.SimulationTests.test_competing_channels_follow_rate_ratios) ... ok
+test_equilibrium_on_accessible_energy_ladder (test_simulation.SimulationTests.test_equilibrium_on_accessible_energy_ladder) ... ok
+test_exponential_survival_probability (test_simulation.SimulationTests.test_exponential_survival_probability) ... ok
+test_histogram_binning_does_not_change_trajectories (test_simulation.SimulationTests.test_histogram_binning_does_not_change_trajectories) ... ok
+test_histogram_limits_do_not_clip_carrier_energies (test_simulation.SimulationTests.test_histogram_limits_do_not_clip_carrier_energies) ... ok
+test_impossible_uphill_jump_never_occurs (test_simulation.SimulationTests.test_impossible_uphill_jump_never_occurs) ... ok
+test_invalid_configuration_and_initial_states (test_simulation.SimulationTests.test_invalid_configuration_and_initial_states) ... ok
+test_original_gamma_to_l_bug_is_fixed_in_actual_events (test_simulation.SimulationTests.test_original_gamma_to_l_bug_is_fixed_in_actual_events) ... ok
+test_population_histograms_flux_and_energy_conservation (test_simulation.SimulationTests.test_population_histograms_flux_and_energy_conservation) ... ok
+test_reproducibility_and_no_global_rng_changes (test_simulation.SimulationTests.test_reproducibility_and_no_global_rng_changes) ... ok
+test_snapshot_spacing_does_not_change_single_carrier_trajectory (test_simulation.SimulationTests.test_snapshot_spacing_does_not_change_single_carrier_trajectory) ... ok
+
+----------------------------------------------------------------------
+Ran 35 tests in 16.611s
+
+OK
