@@ -1,0 +1,59 @@
+{
+  "seed": 0,
+  "num_carriers": 20000,
+  "duration_ps": 5000,
+  "events": 6090895,
+  "phonons_emitted": 3298656,
+  "phonons_absorbed": 2792239,
+  "population_conserved": true,
+  "histograms_account_for_all_carriers": true,
+  "max_total_energy_balance_error_eV": 7.275957614183426e-12,
+  "max_carrier_energy_balance_error_eV": 2.886579864025407e-15,
+  "initial_mean_total_energy_eV": 0.8515001038971659,
+  "final_mean_total_energy_eV": 0.09187460389716595,
+  "final_populations": {
+    "Gamma": 48,
+    "X": 5606,
+    "L": 14346
+  },
+  "minimum_final_kinetic_energy_eV": 3.3579403237643524e-05,
+  "final_histogram_overflow": 0,
+  "simulation_seconds": 14.168185192999772,
+  "automated_tests_passed": 35,
+  "optical_excitation": {
+    "band_gap_eV": 1.0,
+    "photon_center_eV": 2.0,
+    "spectral_fwhm_eV": 1.0,
+    "electron_mass_ratio": 1.0,
+    "hole_mass_ratio": 1.0
+  },
+  "initial_mean_electron_kinetic_energy_eV": 0.5515001038971657,
+  "initial_std_electron_kinetic_energy_eV": 0.1972619087340904,
+  "initial_mean_photon_energy_eV": 2.1030002077943317,
+  "final_mean_kinetic_energy_eV": 0.07713960389716597,
+  "model_equilibrium_mean_total_energy_eV": 0.09203756642310629,
+  "continuum_mean_total_energy_eV": 0.09195458027787637,
+  "model_equilibrium_valley_fractions": [
+    0.002183259903478368,
+    0.2750560373202249,
+    0.7227607027762967
+  ],
+  "continuum_valley_fractions": [
+    0.0021838241736977645,
+    0.27486867332924075,
+    0.7229475024970615
+  ],
+  "final_total_variation_to_model": 0.047151089912666436,
+  "final_total_variation_to_continuum": 0.051451396344513546,
+  "model_vs_continuum_total_variation": 0.017987051366982247,
+  "equilibrium_draw_total_variation_range": [
+    0.038913661557002835,
+    0.04673344326392308
+  ],
+  "equilibrium_draw_mean_total_energy_range_eV": [
+    0.09070610389716575,
+    0.09266660389716579
+  ],
+  "optical_initial_empty_remainder_bins_of_30": 0,
+  "max_histogram_overflow": 0
+}
