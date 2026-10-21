@@ -108,11 +108,10 @@ def _sample_times(duration, interval):
 
 def run_simulation(config=None, *, seed=0, initial_valleys=None,
                    initial_kinetic_energies_eV=None):
-    """Run exact event-time sampling for independent, time-homogeneous carriers.
+    """Sample continuous-time phonon events for independent electrons.
 
-    Each channel has a constant rate between events. Snapshot spacing controls
-    output sampling only; it is not used to approximate event probabilities.
-    Energies are never rounded to bins or clipped to the histogram range.
+    Channel rates stay constant between events. Snapshot spacing controls when
+    results are recorded. Histograms do not affect the electron trajectories.
     """
     config = SimulationConfig() if config is None else config
     model = config.model
@@ -190,7 +189,7 @@ def run_simulation(config=None, *, seed=0, initial_valleys=None,
 
 
 def plot_results(result, output_path=None, *, show=False):
-    """Plot a result without relying on global simulation settings."""
+    """Plot valley populations and energy histories."""
     from matplotlib import pyplot as plt
 
     model = result.config.model

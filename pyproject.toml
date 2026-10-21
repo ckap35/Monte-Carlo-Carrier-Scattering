@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "monte-carlo-carrier-scattering"
 version = "0.2.0"
-description = "Energy-conserving multivalley carrier scattering with illustrative rates"
+description = "Monte Carlo relaxation in parabolic semiconductor valleys"
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = ["numpy>=1.24", "matplotlib>=3.7"]

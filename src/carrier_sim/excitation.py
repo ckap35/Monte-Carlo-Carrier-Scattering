@@ -103,7 +103,7 @@ class OpticalExcitation:
         return self.excess_pdf(np.asarray(kinetic_energy_eV) / fraction) / fraction
 
     def sample_pairs(self, count, rng):
-        """Sample JDOS-weighted excitation with no energy grid or hard tail cutoff.
+        """Draw continuous pair energies from the JDOS-weighted pulse spectrum.
 
         For a pump near/above gap, a Gaussian centered at the target mode is an
         envelope because log(q) <= log(mode)+(q-mode)/mode. For far-subgap pumps,

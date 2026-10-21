@@ -30,7 +30,7 @@ class OpticalExcitationTests(unittest.TestCase):
         pairs = optical.sample_pairs(2000, np.random.default_rng(2))
         assert_allclose(pairs.photon_energies_eV,
                         1 + pairs.electron_kinetic_energies_eV + pairs.hole_kinetic_energies_eV)
-        # Equal k implies m_e*epsilon_e = m_h*epsilon_h.
+        # Equal wavevector magnitudes give m_e*epsilon_e = m_h*epsilon_h.
         assert_allclose(0.2 * pairs.electron_kinetic_energies_eV,
                         0.8 * pairs.hole_kinetic_energies_eV, rtol=1e-14)
         self.assertTrue(np.all(pairs.photon_energies_eV > 1))

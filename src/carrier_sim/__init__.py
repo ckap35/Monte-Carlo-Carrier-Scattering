@@ -1,4 +1,4 @@
-"""Energy-conserving, fixed-bath carrier scattering with illustrative rates."""
+"""Monte Carlo phonon scattering in parabolic conduction valleys."""
 
 from .physics import ScatteringModel
 from .excitation import OpticalExcitation, OpticalPairs
