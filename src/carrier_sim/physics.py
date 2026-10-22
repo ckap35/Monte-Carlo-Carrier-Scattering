@@ -1,8 +1,7 @@
-"""Illustrative parabolic-valley model with one effective optical phonon mode.
+"""Phonon rates for parabolic conduction valleys.
 
-Energies are in eV, time in ps, and the rate coefficients in ps^-1. The
-destination density of states is scaled to a dimensionless reference value.
-These coefficients and valley parameters are not a fit to a specific material.
+Energies are in eV, time in ps, and coupling coefficients in ps^-1.
+The destination DOS is scaled by a reference energy.
 """
 
 from dataclasses import dataclass, field

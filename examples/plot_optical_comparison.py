@@ -204,46 +204,42 @@ def main():
                         distance_to_model=to_model, distance_to_continuum=to_continuum)
     notes = f"""# Optical excitation and carrier relaxation
 
-This illustrative direct-transition example has Eg={optical.band_gap_eV:g} eV,
-pump center {optical.photon_center_eV:g} eV, Gaussian electric-field spectral
-intensity FWHM {optical.spectral_fwhm_eV:g} eV, electron mass
-{optical.electron_mass_ratio:g} m0, and hole mass {optical.hole_mass_ratio:g} m0.
-Eg is the direct gap to the injected valley, not the offset of that valley
-relative to the lowest conduction valley. Only electrons are propagated.
+Direct gap: {optical.band_gap_eV:g} eV. Pulse center: {optical.photon_center_eV:g} eV.
+Gaussian spectral-intensity FWHM: {optical.spectral_fwhm_eV:g} eV.
+Electron and hole masses: {optical.electron_mass_ratio:g} and {optical.hole_mass_ratio:g} m0.
+The gap is measured to the injected valley. Only electrons are propagated.
 
-For isotropic 3D parabolic bands and a vertical allowed transition:
-1/mu = 1/me + 1/mh;
-JDOS(Egamma) = (1/(2 pi^2)) (2 mu/hbar^2)^(3/2) sqrt(Egamma-Eg) above Eg;
-P(Egamma) is proportional to JDOS(Egamma) times the Gaussian spectrum;
-epsilon_e = mh/(me+mh) (Egamma-Eg), epsilon_h = me/(me+mh) (Egamma-Eg).
-The JDOS includes two spin states. The dipole matrix element is constant,
-the valence band initially filled, and the conduction band initially empty.
-The number of simulated pairs is specified; no absolute fluence/yield is fitted.
-Sampling uses an unbounded rejection method rather than energy bins.
+## Preparation
 
-The 1 eV bandwidth belongs to the photon spectrum. Before JDOS weighting,
-the electron's Gaussian energy width is only its share of that bandwidth.
-JDOS weighting shifts and reshapes the actual electron distribution.
-The broad pulse is treated as instantaneous preparation at t=0.
+For isotropic 3D parabolic bands, 1/mu = 1/me + 1/mh. The spin-inclusive JDOS
+is (1/(2 pi^2)) (2 mu/hbar^2)^(3/2) sqrt(Egamma-Eg) above the gap and zero below.
+Pairs are drawn from this JDOS times the Gaussian electric-field spectrum,
+assuming a constant dipole, a filled valence band, and an empty conduction band.
 
-All figures and numerical results use the optical-pulse preparation described
-above. The initial state populates all 30 energy-remainder bins. Each electron
-still conserves total energy modulo the single {model.phonon_energy_eV * 1000:g} meV phonon.
-Thus the correct stationary reference preserves the initial energy classes;
-a smooth thermal-looking envelope alone does not prove global thermalization.
+The electron receives mh/(me+mh) of the excess photon energy and the hole
+receives me/(me+mh). The pulse prepares the state at t=0. The pair count is
+specified by the run; predicting the yield would also require fluence and a
+dipole magnitude. Sampling uses continuous energies.
 
-At {times[-1]:g} ps, mean total energy is {numerical['final_mean_total_energy_eV']:.8f} eV,
-versus {reference.mean_total_energy_eV:.8f} eV for accessible equilibrium.
-The final joint-histogram TV distance to that reference is {to_model[-1]:.5f};
-24 independent equilibrium draws span {equilibrium_sampling.min():.5f} to
-{equilibrium_sampling.max():.5f}. This is a sampling diagnostic, not a confidence
-interval or proof that every observable has equilibrated. {tests} tests pass.
+The single {model.phonon_energy_eV * 1000:g} meV phonon preserves each electron's
+energy remainder. The equilibrium reference keeps those initial class weights;
+the unrestricted thermal distribution is shown separately.
 
-Source for direct-transition JDOS: David Miller, Stanford, Lecture 32,
+## Results
+
+At {times[-1]:g} ps, mean total energy is {numerical['final_mean_total_energy_eV']:.8f} eV.
+The accessible-equilibrium value is {reference.mean_total_energy_eV:.8f} eV.
+The final joint-histogram total variation distance is {to_model[-1]:.5f};
+24 independent equilibrium draws give {equilibrium_sampling.min():.5f} to
+{equilibrium_sampling.max():.5f}. This sampling range is not a confidence interval
+or a test that every observable has equilibrated. The test log records
+{tests} passing tests.
+
+The archive contains PNG/SVG figures, optical-run arrays, metrics, and the test
+log. Simulation commands and source code are in the repository README.
+
+JDOS reference: David Miller, Stanford, Lecture 32,
 https://web.stanford.edu/group/dabmgroup/cgi-bin/dabm/wp-content/uploads/2021/12/Lecture_32.pdf
-
-The archive contains PNG/SVG figures, optical-run arrays, metrics, and test log.
-Simulation arrays and all reproduction scripts are kept with the repository.
 """
     (args.output / "README.md").write_text(notes)
     with zipfile.ZipFile(args.output / "Optical-excitation-comparison.zip", "w", zipfile.ZIP_DEFLATED) as archive:

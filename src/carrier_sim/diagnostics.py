@@ -25,11 +25,10 @@ class EquilibriumReference:
 
 
 def absolute_histograms(density, kinetic_edges, floors):
-    """Shift valley histograms onto a common total-energy axis without smearing.
+    """Place valley histograms on a common total-energy grid.
 
-    Requires uniform bins and valley-floor differences aligned with their width.
-    This condition holds for the example's 2 meV bins and 50/300 meV offsets.
-    Counts outside the input histograms are not reconstructed.
+    Bin widths must be uniform, with valley-floor differences aligned to the
+    bins. Overflow counts must be handled separately.
     """
     density = np.asarray(density)
     edges, floors = np.asarray(kinetic_edges), np.asarray(floors)

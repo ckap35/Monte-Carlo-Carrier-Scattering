@@ -1,4 +1,4 @@
-"""Run a reproducible carrier simulation and save arrays, settings, and plots."""
+"""Run carrier scattering from JSON settings and save the result."""
 
 import argparse
 import json
