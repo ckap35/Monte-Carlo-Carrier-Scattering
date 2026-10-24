@@ -2,7 +2,8 @@
 
 The Gaussian is the electric-field spectral intensity |E_tilde(E_gamma)|^2.
 With a constant interband dipole, pair generation is this spectrum times JDOS.
-The pulse is treated as preparation at t=0; holes are recorded but not evolved.
+The pulse prepares electron and hole energies at t=0; electrons then evolve
+through phonon scattering.
 """
 
 from dataclasses import asdict, dataclass
@@ -63,7 +64,6 @@ class OpticalExcitation:
         """JDOS per eV per cm^3 for one band pair, including two spin states.
 
         In SI units: (1/(2*pi^2))*(2*mu/hbar^2)^(3/2)*sqrt(E_gamma-E_gap).
-        This is a density of allowed transitions, not an absolute excitation yield.
         """
         excess_J = np.maximum(np.asarray(photon_energy_eV) - self.band_gap_eV, 0) * EV_IN_J
         reduced_kg = self.reduced_mass_ratio * ELECTRON_MASS_KG
@@ -71,7 +71,7 @@ class OpticalExcitation:
                 * np.sqrt(excess_J) * EV_IN_J / 1e6)
 
     def _relative_weight(self, excess):
-        # Subtract the exponent at the mode; this remains usable for subgap pumps.
+        # Shift the exponent to the mode to avoid underflow for subgap pumps.
         center, mode = self.photon_center_eV - self.band_gap_eV, self.excess_mode_eV
         return (np.sqrt(np.maximum(excess, 0))
                 * np.exp(-(excess - mode) * (excess + mode - 2 * center)
@@ -84,8 +84,7 @@ class OpticalExcitation:
         high = max(center, 0) + 12 * sigma
         if center < -sigma:
             high = min(high, 40 * sigma ** 2 / -center)
-        # q = low + (high-low)*u^2 resolves the square-root onset. Tails omitted
-        # only in PDF quadrature are negligible; the random sampler is unbounded.
+        # Resolve the square-root onset with q = low + (high-low)*u^2.
         nodes, weights = np.polynomial.legendre.leggauss(128)
         u = (nodes + 1) / 2
         q = low + (high - low) * u ** 2

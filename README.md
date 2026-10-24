@@ -6,9 +6,9 @@ event times from the total scattering rate.
 
 The optical example prepares electrons with a Gaussian laser spectrum weighted
 by the valence-to-conduction joint density of states (JDOS). It uses a 1 eV
-direct gap, a 2 eV pulse center, and a 1 eV spectral-intensity FWHM. These are
-example parameters, not a fit to a material. Electrons evolve in a fixed phonon
-bath; holes are recorded at excitation but are not propagated.
+direct gap, a 2 eV pulse center, and a 1 eV spectral-intensity FWHM. Electron
+and hole energies are sampled at excitation, then the simulation evolves the
+electrons in a fixed phonon bath.
 
 ## Run
 
@@ -42,7 +42,7 @@ Each run writes:
 
 Reload a saved run with `--config results/optical_excitation/parameters.json`.
 The same settings, seed, and software versions reproduce the saved arrays.
-`--sample-ps` changes the snapshot spacing, not the event-time calculation.
+`--sample-ps` sets the output snapshot interval.
 Use `--show` to display the summary figure.
 
 ## Model
@@ -53,13 +53,12 @@ kinetic energy have zero rate. Rates use the destination DOS and Bose phonon
 occupation; symmetric coupling coefficients give detailed balance.
 
 The [model notes](docs/model.md) define the rates, energy convention, optical
-initialization, and equilibrium reference. The example uses a 600 K bath and
-one 30 meV phonon mode. It has no electric field, spatial transport,
-carrier-carrier scattering, or Pauli blocking.
+initialization, and equilibrium reference. The model treats independent,
+nondegenerate electrons in a uniform bath. The example uses 600 K and one
+30 meV phonon mode.
 
 A single phonon energy preserves each electron's total energy modulo 30 meV.
-The equilibrium comparison accounts for those conserved energy classes.
-A smooth energy histogram alone is not evidence of unrestricted thermalization.
+The equilibrium reference uses those conserved energy classes.
 
 ## Python API
 

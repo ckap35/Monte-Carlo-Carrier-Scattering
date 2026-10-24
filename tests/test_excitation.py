@@ -14,8 +14,7 @@ class OpticalExcitationTests(unittest.TestCase):
     def test_jdos_integrates_to_k_space_state_count(self):
         optical = OpticalExcitation(band_gap_eV=1, photon_center_eV=2,
                                     electron_mass_ratio=0.2, hole_mass_ratio=0.8)
-        # Count all states in a k-space sphere, with two spins, independently
-        # of the density per photon energy. Integrate using q=u^2.
+        # Integrate with q=u^2 to resolve the band edge.
         nodes, weights = np.polynomial.legendre.leggauss(32)
         q_max = 0.7
         u = np.sqrt(q_max) * (nodes + 1) / 2
@@ -47,8 +46,7 @@ class OpticalExcitationTests(unittest.TestCase):
         self.assertLess(abs(q.mean() - mean), 5 * np.sqrt((second - mean ** 2) / len(q)))
 
     def test_samples_and_pdf_against_independent_quadrature(self):
-        # Test both rejection proposals and a far-subgap tail. The reference
-        # uses JDOS times spectrum, rather than the sampler's envelope.
+        # Check both rejection proposals with JDOS*spectrum quadrature.
         nodes, weights = np.polynomial.legendre.leggauss(300)
         for center in (0.1, 1, 2, 4):
             with self.subTest(center=center):

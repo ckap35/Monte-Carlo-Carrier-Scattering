@@ -111,8 +111,7 @@ class ScatteringModel:
         destination = self.destination_energies(valleys, energies)
         factors = (np.asarray(self.valley_degeneracies)
                    * np.asarray(self.dos_mass_ratios) ** 1.5)
-        # max() only makes sqrt safe. Forbidden states remain zero-rate and
-        # are never accepted or clipped into the simulated energy domain.
+        # Keep sqrt real, then zero the forbidden-channel rates.
         dos = (factors[None, :, None]
                * np.sqrt(np.maximum(destination, 0) / self.dos_reference_energy_eV))
         occupation = self.phonon_occupation

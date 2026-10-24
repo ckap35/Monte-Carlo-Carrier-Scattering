@@ -34,7 +34,6 @@ at zero temperature.
 The default Gamma/X/L floors are 0.30/0.05/0 eV; DOS masses and degeneracies
 are one. Coupling coefficients are 0.05 ps^-1 within a valley and 0.01 ps^-1
 between valleys. The optical example uses a 600 K bath and a 30 meV phonon.
-These coefficients and band parameters are example values.
 
 The waiting time is exponential with the total outgoing rate. A channel is
 then drawn in proportion to its rate, and the next clock starts at the event
@@ -81,28 +80,28 @@ $$
 \varepsilon_h=\frac{m_e}{m_e+m_h}(E_\gamma-E_g).
 $$
 
-The direct gap runs from the valence maximum to the injected conduction valley.
-It is not that valley's offset from the lowest conduction valley. The optical
-electron mass must match the injected valley's DOS mass. Mass parameters are
-ratios to the free-electron mass.
+The direct gap is measured from the valence maximum to the injected conduction
+valley. Valley floors use a common conduction-band energy reference. The optical
+electron mass matches the injected valley's DOS mass. All masses are expressed
+as ratios to the free-electron mass.
 
 The example uses equal masses, so each particle receives half the excess
 energy. A 1 eV pulse bandwidth therefore maps to a 0.5 eV electron bandwidth
-before JDOS weighting. Rejection sampling draws continuous pair energies
-without a hard tail cutoff. The carrier count is specified by the run;
-predicting an absolute excitation yield would also require fluence and a
-dipole magnitude. The pulse prepares the state at t=0, and only the electrons
-are propagated afterward.
+before JDOS weighting. Pair energies are drawn by rejection sampling with
+unbounded energy support. `num_carriers` sets the number of sampled pairs.
+The pulse prepares the state at t=0, after which the electrons undergo phonon
+scattering.
 
 ## Equilibrium and conservation
 
 For the connected, positive-temperature example, equilibrium has DOS-weighted
-Boltzmann weights on each electron's accessible energy ladder. A single phonon energy preserves
-total energy modulo that phonon energy, so the reference normalizes each
-ladder separately before combining the electrons. The unrestricted 3D thermal
-kinetic-energy distribution is proportional to
-`sqrt(E) * exp(-E / (k_B T))`, with mean `3 k_B T / 2`; it need not be the
-stationary distribution reached from a given initialization.
+Boltzmann weights on each electron's accessible energy ladder. A single phonon
+energy preserves total energy modulo that phonon energy, so the reference
+normalizes each ladder separately before combining the electrons.
+
+The continuum Boltzmann kinetic-energy distribution is proportional to
+`sqrt(E) * exp(-E / (k_B T))`, with mean `3 k_B T / 2`. The accessible
+reference conditions the Boltzmann weights on the conserved energy classes.
 
 At each snapshot, electron energy plus net energy transferred to the phonon
 bath equals the initial electron energy, up to roundoff. The saved arrays

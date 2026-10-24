@@ -207,7 +207,7 @@ def main():
 Direct gap: {optical.band_gap_eV:g} eV. Pulse center: {optical.photon_center_eV:g} eV.
 Gaussian spectral-intensity FWHM: {optical.spectral_fwhm_eV:g} eV.
 Electron and hole masses: {optical.electron_mass_ratio:g} and {optical.hole_mass_ratio:g} m0.
-The gap is measured to the injected valley. Only electrons are propagated.
+The gap is measured to the injected valley. Electrons evolve through phonon scattering.
 
 ## Preparation
 
@@ -217,9 +217,8 @@ Pairs are drawn from this JDOS times the Gaussian electric-field spectrum,
 assuming a constant dipole, a filled valence band, and an empty conduction band.
 
 The electron receives mh/(me+mh) of the excess photon energy and the hole
-receives me/(me+mh). The pulse prepares the state at t=0. The pair count is
-specified by the run; predicting the yield would also require fluence and a
-dipole magnitude. Sampling uses continuous energies.
+receives me/(me+mh). The pulse prepares the state at t=0. The run specifies
+the pair count, and sampling uses continuous energies.
 
 The single {model.phonon_energy_eV * 1000:g} meV phonon preserves each electron's
 energy remainder. The equilibrium reference keeps those initial class weights;
@@ -231,9 +230,7 @@ At {times[-1]:g} ps, mean total energy is {numerical['final_mean_total_energy_eV
 The accessible-equilibrium value is {reference.mean_total_energy_eV:.8f} eV.
 The final joint-histogram total variation distance is {to_model[-1]:.5f};
 24 independent equilibrium draws give {equilibrium_sampling.min():.5f} to
-{equilibrium_sampling.max():.5f}. This sampling range is not a confidence interval
-or a test that every observable has equilibrated. The test log records
-{tests} passing tests.
+{equilibrium_sampling.max():.5f}. The test log records {tests} passing tests.
 
 The archive contains PNG/SVG figures, optical-run arrays, metrics, and the test
 log. Simulation commands and source code are in the repository README.

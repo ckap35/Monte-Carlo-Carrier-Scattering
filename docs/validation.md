@@ -24,7 +24,7 @@ electron/hole masses are both m0. Excitation prepares Gamma electrons.
 
 The bath is 600 K with one 30 meV phonon. Gamma/X/L floors are 0.30/0.05/0 eV;
 DOS masses and degeneracies are one. Intra- and intervalley couplings are
-0.05 and 0.01 ps^-1. These are the model's example parameters.
+0.05 and 0.01 ps^-1.
 
 | Quantity | Result |
 | --- | ---: |
@@ -42,8 +42,7 @@ DOS masses and degeneracies are one. Intra- and intervalley couplings are
 
 The final joint valley/kinetic-energy histogram is at total variation distance
 0.04715 from the accessible equilibrium. Twenty-four independent equilibrium
-draws give distances of 0.03891–0.04673. This is a sampling comparison, not a
-confidence interval or a test that every observable has equilibrated. The
+draws give distances of 0.03891–0.04673. The
 [model notes](model.md) explain the conserved energy classes and thermal reference.
 
 ## Figures

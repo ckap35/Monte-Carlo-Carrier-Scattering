@@ -78,12 +78,10 @@ def accessible_equilibrium(model, initial_total_energies, kinetic_edges, total_e
                            *, samples=0, seed=123, batch_size=512):
     """Boltzmann equilibrium conditional on each carrier's conserved E modulo hw.
 
-    Per-carrier weights are DOS_v(E-floor_v)*exp(-E/kBT), normalized on that
-    carrier's accessible energy ladder, then mixed with the actual initial class
-    weights. A 40-kBT tail cutoff makes omitted reference mass negligible here.
-    Strictly positive couplings are a sufficient connectivity condition. Optional
-    equilibrium samples preserve each initial carrier's class and quantify the
-    finite-ensemble sampling range without assuming identically distributed states.
+    Normalize DOS_v(E-floor_v)*exp(-E/kBT) on each carrier's energy ladder,
+    then mix using the initial class weights. The energy grid extends at least
+    40 kBT above the highest valley floor. Optional samples draw one state per
+    carrier from its own ladder. Temperature and all couplings must be positive.
     """
     if model.temperature_K <= 0 or np.any(model.coupling_ps_inv <= 0):
         raise ValueError("positive temperature and strictly positive couplings are required")

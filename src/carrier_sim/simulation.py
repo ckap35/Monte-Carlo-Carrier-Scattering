@@ -111,7 +111,7 @@ def run_simulation(config=None, *, seed=0, initial_valleys=None,
     """Sample continuous-time phonon events for independent electrons.
 
     Channel rates stay constant between events. Snapshot spacing controls when
-    results are recorded. Histograms do not affect the electron trajectories.
+    results are recorded; histogram bins are used for these snapshots.
     """
     config = SimulationConfig() if config is None else config
     model = config.model
