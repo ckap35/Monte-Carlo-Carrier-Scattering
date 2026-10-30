@@ -89,6 +89,10 @@ Run the simulation first; the plotting command reads its saved arrays and test
 log. It writes PNG/SVG figures, equilibrium reference arrays, and numerical
 comparisons. Output directories under `results/` are ignored by Git.
 
+GitHub Actions runs the tests on Python 3.10 and 3.12. To use the recorded
+Python 3.12 dependency versions, install `requirements-reference.txt` before
+installing the package with `python -m pip install --no-deps -e .`.
+
 The [reference run](docs/validation.md) records 35 passing tests and the
 20,000-electron simulation. The [test log](docs/test_results.txt),
 [metrics](docs/validation_metrics.json), and
